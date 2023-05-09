@@ -41,7 +41,8 @@ int main() {
 	}
 	cout << s;
 	*/
-	auto mcs = MCS::buildMCSForm2CombMap(23, 14, 5);
+	//auto mcs = MCS::buildMCSForm2CombMap(23, 14, 5);
+	auto mcs = MCS::buildMCSForm2CombMap(23, 14, 6);
 
 	std::cout << "\nMCS:\n";
 	for (auto form : mcs.getMcsForms()) {

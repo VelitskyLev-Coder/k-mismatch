@@ -9,10 +9,10 @@ const std::vector<Form>& MCS::getMcsForms() const
 	return this->mcsForms;
 }
 
-MCS MCS::buildMCSNaive(uint64_t length, uint64_t mismatchK, uint64_t matchesPerFormint)
+MCS MCS::buildMCSNaive(uint64_t length, uint64_t mismatchK, uint64_t matchesPerForm)
 {
 	MCS resultMCS;
-	auto [combinations, forms] = buildFullCombinationsAndForms(length, mismatchK, matchesPerFormint);
+	auto [combinations, forms] = buildFullCombinationsAndForms(length, mismatchK, matchesPerForm);
 	while (!combinations.empty())
 	{
 		std::cout << combinations.size() << std::endl;
@@ -47,27 +47,37 @@ MCS MCS::buildMCSNaive(uint64_t length, uint64_t mismatchK, uint64_t matchesPerF
 	return resultMCS;
 }
 
-MCS MCS::buildMCSForm2CombMap(uint64_t length, uint64_t mismatchK, uint64_t matchesPerFormint)
+MCS MCS::buildMCSForm2CombMap(uint64_t length, uint64_t mismatchK, uint64_t matchesPerForm)
 {
 	MCS resultMCS;
-	auto [combinations, forms] = buildFullCombinationsAndForms(length, mismatchK, matchesPerFormint);
-	std
+	std::cout << "Start to build MCS for lenth: " << length << ", mismaychK: " << mismatchK << ", matchesPerForm: " << matchesPerForm << '\n';
+	auto [combinations, forms] = buildFullCombinationsAndForms(length, mismatchK, matchesPerForm);
+	std::map<Combination, std::set<Form>> com2FormSetMap;
+	for (const Combination& combination : combinations) {
+		com2FormSetMap[combination] = combination.getAllForms(matchesPerForm);
+	}
+	std::cout << "Number of all combinations: " << combinations.size() << "\n";
+	std::cout << "Number of all forms: " << forms.size() << "\n";
 
 	while (!combinations.empty())
 	{
-		std::cout << combinations.size() << std::endl;
+		std::cout <<"Remaining combinations: " << combinations.size() << std::endl;
 		//Calcualate the form that contributes for the maximal number of combinations
+		std::map<Form, uint64_t> form2ComNumberMap;
+		for (const Form& form : forms)
+			form2ComNumberMap[form] = 0;
+		for (const Combination& combination : combinations)
+			for (const Form& form : com2FormSetMap.find(combination)->second)
+				form2ComNumberMap.find(form)->second++;
+
 		uint64_t maxCombinationNumber = 0;
 		Form& bestForm = forms.front();
 		for (const Form& form : forms)
 		{
-			uint64_t curFormCombinationNumber = 0;
-			for (const Combination& combination : combinations)
-				if (combination.contains(form))
-					curFormCombinationNumber++;
-			if (curFormCombinationNumber > maxCombinationNumber)
+			auto curFormCombNumberPairIt = form2ComNumberMap.find(form);
+			if (curFormCombNumberPairIt->second > maxCombinationNumber)
 			{
-				maxCombinationNumber = curFormCombinationNumber;
+				maxCombinationNumber = curFormCombNumberPairIt->second;
 				bestForm = form;
 			}
 		}
