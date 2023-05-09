@@ -7,6 +7,7 @@ class MCS
 {
 public:
 	const std::vector<Form>& getMcsForms() const;
+	static MCS buildMCSNaiveMultithreaded(uint64_t length, uint64_t mismatchK, uint64_t matchesPerForm);
 	static MCS buildMCSNaive(uint64_t length, uint64_t mismatchK, uint64_t matchesPerForm);
 	static MCS buildMCSForm2CombMap(uint64_t length, uint64_t mismatchK, uint64_t matchesPerForm);
 	static std::tuple<std::vector<Combination>, std::vector<Form>>

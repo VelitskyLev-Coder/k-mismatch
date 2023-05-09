@@ -42,13 +42,14 @@ int main() {
 	cout << s;
 	*/
 	//auto mcs = MCS::buildMCSForm2CombMap(23, 14, 5);
-	auto mcs = MCS::buildMCSForm2CombMap(23, 14, 6);
+	auto mcs = MCS::buildMCSNaiveMultithreaded(23, 23 * 40 / 100, 5);
 
 	std::cout << "\nMCS:\n";
 	for (auto form : mcs.getMcsForms()) {
 		cout << form << '\n';
 		s++;
 	}
-	cout <<"\nWith total length of " << s<<" forms\n";
+	cout << "\nWith total length of " << s << " forms\n";
+	std::cout << "____________________\n";
 	return 0;
 }
