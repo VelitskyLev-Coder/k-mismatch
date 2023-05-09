@@ -1,6 +1,6 @@
 #include "mcs.h"
 #include <algorithm>
-
+#include <map>
 //TODO remove
 #include <iostream>
 
@@ -51,15 +51,8 @@ MCS MCS::buildMCSForm2CombMap(uint64_t length, uint64_t mismatchK, uint64_t matc
 {
 	MCS resultMCS;
 	auto [combinations, forms] = buildFullCombinationsAndForms(length, mismatchK, matchesPerFormint);
-	for (Combination combination : combinations)
-	{
-		std::cout << "________________\n";
-		std::cout << "For combination: " << combination << " we get:\n";
-		for (Form form : combination.getAllForms(matchesPerFormint))
-		{
-			std::cout << form << "\n";
-		}
-	}
+	std
+
 	while (!combinations.empty())
 	{
 		std::cout << combinations.size() << std::endl;
