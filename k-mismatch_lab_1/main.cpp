@@ -1,8 +1,10 @@
-#include "Combination.h"
-#include "Form.h"
+#include "combination.h"
+#include "form.h"
 #include <iostream>
 #include <vector>
 #include <chrono>
+#include "mcs.h"
+
 class SimpleTimer
 {
 public:
@@ -32,11 +34,20 @@ int main() {
 		s++;
 	}
 	cout << s;*/
-	auto forms = Form::generateAllForms(64, 3);
+	/*auto forms = Form::generateAllForms(10, 3);
 	for (auto form : forms) {
-		cout << form << endl;
+		cout << form << '\n';
 		s++;
 	}
 	cout << s;
+	*/
+	auto mcs = MCS::buildMCSForm2CombMap(23, 14, 5);
+
+	std::cout << "\nMCS:\n";
+	for (auto form : mcs.getMcsForms()) {
+		cout << form << '\n';
+		s++;
+	}
+	cout <<"\nWith total length of " << s<<" forms\n";
 	return 0;
 }

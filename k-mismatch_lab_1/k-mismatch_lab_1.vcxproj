@@ -104,6 +104,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -118,6 +119,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -127,15 +129,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="BinaryIntBaseSequence.h" />
+    <ClInclude Include="binaryIntBaseSequence.h" />
     <ClInclude Include="binomFunction.h" />
-    <ClInclude Include="Combination.h" />
-    <ClInclude Include="Form.h" />
+    <ClInclude Include="combination.h" />
+    <ClInclude Include="form.h" />
+    <ClInclude Include="mcs.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Combination.cpp" />
-    <ClCompile Include="Form.cpp" />
+    <ClCompile Include="combination.cpp" />
+    <ClCompile Include="form.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="mcs.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

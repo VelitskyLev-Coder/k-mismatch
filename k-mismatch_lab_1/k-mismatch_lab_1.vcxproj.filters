@@ -15,27 +15,33 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Combination.h">
+    <ClInclude Include="combination.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="BinaryIntBaseSequence.h">
+    <ClInclude Include="binaryIntBaseSequence.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Form.h">
+    <ClInclude Include="form.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="binomFunction.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="mcs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Combination.cpp">
+    <ClCompile Include="combination.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Form.cpp">
+    <ClCompile Include="form.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mcs.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

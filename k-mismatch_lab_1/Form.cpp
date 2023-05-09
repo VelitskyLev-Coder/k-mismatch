@@ -1,4 +1,4 @@
-#include "Form.h"
+#include "form.h"
 #include <functional>
 #include "binomFunction.h"
 

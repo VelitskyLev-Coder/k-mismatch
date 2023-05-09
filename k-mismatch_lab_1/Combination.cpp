@@ -1,9 +1,80 @@
-#include "Combination.h"
+#include "combination.h"
 #include <functional>
 #include "binomFunction.h"
 
 
 
+
+bool Combination::contains(const Form& form) const
+{
+    uint64_t formInt = form.sequenceInt;
+    uint64_t combinationInt = this->sequenceInt;
+    bool last_iteration = false;
+    while (true)
+    {
+        /*
+            First is a combination, second is a forms
+            (0, 0) -> 1
+            (0, 1) -> 0
+            (1, 0) -> 1
+            (1, 1) -> 1
+            NOT(NOT(combination) AND form) = combination OR NOT(form)
+            we should check if we are getting all ones
+        */
+        if ((combinationInt | ~formInt) == ~static_cast<uint64_t>(0))
+            return true;
+
+        if (last_iteration)
+            break;
+
+        formInt <<= 1;
+        // the last bit is 1, we are at the last iteration
+        if (static_cast<uint64_t>(1) << 63 & formInt)
+            last_iteration = true;
+    }
+
+    return false;
+}
+
+uint64_t cutRightZeros(uint64_t n)
+{
+    while (!(n & 1))
+        n >>= 1;
+    return n;
+}
+
+std::set<Form> Combination::getAllForms(uint64_t matches) const
+{
+    std::set<Form> allInnerForms;
+    uint64_t ones = matches;
+    uint64_t combInt = this->sequenceInt;
+
+    // Recursive function to generate combinations
+    std::function<void(uint64_t, uint64_t, uint64_t)> generateInnerForms;
+    generateInnerForms = [&allInnerForms, &generateInnerForms, &combInt]
+       (uint64_t remainOnes, uint64_t curPosition, uint64_t curFormInt) 
+    {
+        if (!remainOnes) {
+            allInnerForms.insert(Form(cutRightZeros(curFormInt)));
+            return;
+        }
+
+        while (!((static_cast<uint64_t>(1)<<63) & curPosition))
+        {
+            if (combInt & curPosition)
+                generateInnerForms(remainOnes - 1, curPosition << 1, curFormInt | curPosition);
+            curPosition <<= 1;
+        }
+
+        if ((combInt & curPosition) && (remainOnes == 1))
+            allInnerForms.insert(Form(cutRightZeros(curFormInt | curPosition)));
+    
+    };
+
+    generateInnerForms(matches, 1, 0);
+
+    return allInnerForms;
+}
 
 // Generates combinations of ones and zeros in a binary sequence
 // with a fixed length and a specific number of zeros (mismatchK).
