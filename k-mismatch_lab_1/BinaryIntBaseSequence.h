@@ -29,7 +29,7 @@ public:
     // to an output stream, such as std::cout or a file stream.
     friend std::ostream& operator<<(std::ostream& os, const BinaryIntBaseSequence<Derived>& binaryIntBaseSequence)
     {
-        kMismatch::uint_type sequenceInt = binaryIntBaseSequence.sequenceInt;
+        kMismatchIntegerType::uint_type sequenceInt = binaryIntBaseSequence.sequenceInt;
         std::ostringstream oss;
         std::string resultToPrint;
         do
@@ -46,8 +46,8 @@ public:
     }
 
 protected:
-    kMismatch::uint_type sequenceInt;
-    BinaryIntBaseSequence(kMismatch::uint_type sequenceInt)
+    kMismatchIntegerType::uint_type sequenceInt;
+    BinaryIntBaseSequence(kMismatchIntegerType::uint_type sequenceInt)
     {
         this->sequenceInt = sequenceInt;
     }

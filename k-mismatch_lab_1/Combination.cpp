@@ -7,11 +7,11 @@
 
 bool Combination::contains(const Form& form) const
 {
-    kMismatch::uint_type formInt = form.sequenceInt;
-    kMismatch::uint_type combinationInt = this->sequenceInt;
+    kMismatchIntegerType::uint_type formInt = form.sequenceInt;
+    kMismatchIntegerType::uint_type combinationInt = this->sequenceInt;
 
     //Run until the MBS of integer type is 1
-    while (!((static_cast<kMismatch::uint_type>(1) << (kMismatch::UINT_TYPE_SIZE - 1)) & formInt))
+    while (!((static_cast<kMismatchIntegerType::uint_type>(1) << (kMismatchIntegerType::UINT_TYPE_SIZE - 1)) & formInt))
     {
         /*
             First is a combination, second is a forms
@@ -22,19 +22,19 @@ bool Combination::contains(const Form& form) const
             NOT(NOT(combination) AND form) = combination OR NOT(form)
             we should check if we are getting all ones
         */
-        if ((combinationInt | ~formInt) == ~static_cast<kMismatch::uint_type>(0))
+        if ((combinationInt | ~formInt) == ~static_cast<kMismatchIntegerType::uint_type>(0))
             return true;
         formInt <<= 1;
     }
 
     //Last check for MSB is 1
-    if ((combinationInt | ~formInt) == ~static_cast<kMismatch::uint_type>(0))
+    if ((combinationInt | ~formInt) == ~static_cast<kMismatchIntegerType::uint_type>(0))
         return true;
 
     return false;
 }
 
-kMismatch::uint_type cutRightZeros(kMismatch::uint_type n)
+kMismatchIntegerType::uint_type cutRightZeros(kMismatchIntegerType::uint_type n)
 {
     while (!(n & 1))
         n >>= 1;
@@ -44,20 +44,19 @@ kMismatch::uint_type cutRightZeros(kMismatch::uint_type n)
 std::set<Form> Combination::getAllForms(uint64_t matches) const
 {
     std::set<Form> allInnerForms;
-    uint64_t ones = matches;
-    kMismatch::uint_type combInt = this->sequenceInt;
+    kMismatchIntegerType::uint_type combInt = this->sequenceInt;
 
     // Recursive function to generate combinations
-    std::function<void(uint64_t, kMismatch::uint_type, kMismatch::uint_type)> generateInnerForms;
+    std::function<void(uint64_t, kMismatchIntegerType::uint_type, kMismatchIntegerType::uint_type)> generateInnerForms;
     generateInnerForms = [&allInnerForms, &generateInnerForms, &combInt]
-       (uint64_t remainOnes, kMismatch::uint_type curPosition, kMismatch::uint_type curFormInt)
+       (uint64_t remainOnes, kMismatchIntegerType::uint_type curPosition, kMismatchIntegerType::uint_type curFormInt)
     {
         if (!remainOnes) {
             allInnerForms.insert(Form(cutRightZeros(curFormInt)));
             return;
         }
 
-        while (!((static_cast<uint64_t>(1)<< (kMismatch::UINT_TYPE_SIZE - 1)) & curPosition))
+        while (!((static_cast<uint64_t>(1)<< (kMismatchIntegerType::UINT_TYPE_SIZE - 1)) & curPosition))
         {
             if (combInt & curPosition)
                 generateInnerForms(remainOnes - 1, curPosition << 1, curFormInt | curPosition);
@@ -91,9 +90,9 @@ std::vector<Combination> Combination::generateAllCombinations(uint64_t length, u
     allCombinations.reserve(binom(length - 1, zeros));
 
     // Recursive function to generate combinations
-    std::function<void(uint64_t, uint64_t, kMismatch::uint_type)> generateCombinations;
+    std::function<void(uint64_t, uint64_t, kMismatchIntegerType::uint_type)> generateCombinations;
     generateCombinations = [&allCombinations, &generateCombinations]
-    (uint64_t remainOnes, uint64_t remainZeros, kMismatch::uint_type curCombinationInt) {
+    (uint64_t remainOnes, uint64_t remainZeros, kMismatchIntegerType::uint_type curCombinationInt) {
         if (!remainOnes && !remainZeros)
             allCombinations.push_back(Combination(curCombinationInt));
         if (remainOnes)

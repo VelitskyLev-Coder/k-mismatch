@@ -28,10 +28,10 @@ using namespace std;
 int main() {
 	SimpleTimer timer;
 	int64_t s = 0;
-	int length = 18+6;
+	int length = 18+5;
 	auto mcs = MCS::buildMCSNaiveMultithreaded(length, length * 40 / 100, 7);
 	std::cout << "\nMCS:\n";
-	for (auto form : mcs.getMcsForms()) {
+	for (auto& form : mcs.getMcsForms()) {
 		cout << form << '\n';
 		s++;
 	}
