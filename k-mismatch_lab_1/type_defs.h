@@ -1,6 +1,6 @@
 #pragma once
 #include <cstdint>
-#include <boost/multiprecision/cpp_int.hpp>
+//#include <boost/multiprecision/cpp_int.hpp>
 namespace kMismatch {
 	typedef uint64_t uint_type;
 	//typedef boost::multiprecision::uint64_t uint_type;

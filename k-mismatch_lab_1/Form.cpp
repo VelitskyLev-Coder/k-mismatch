@@ -15,6 +15,7 @@ std::vector<Form> Form::generateAllForms(uint64_t length, uint64_t matches)
     std::vector<Form> allForms;
     uint64_t max_zeros = length - matches;
     uint64_t ones = matches;
+   
 
     allForms.reserve(binom(length - 1, max_zeros));
     int k = binom(length - 1, max_zeros);
