@@ -1,5 +1,5 @@
 #pragma once
-constexpr inline uint64_t binom(uint64_t n, uint64_t k) noexcept
+constexpr inline size_t binom(size_t n, size_t k) noexcept
 {
     if (k > n)
         return 0; // out of range

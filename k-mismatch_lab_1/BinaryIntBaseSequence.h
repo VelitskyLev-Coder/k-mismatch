@@ -1,6 +1,7 @@
 #pragma once
 #include <ostream>
 #include <sstream>
+#include "type_defs.h"
 template <class Derived>
 class BinaryIntBaseSequence
 {
@@ -28,7 +29,7 @@ public:
     // to an output stream, such as std::cout or a file stream.
     friend std::ostream& operator<<(std::ostream& os, const BinaryIntBaseSequence<Derived>& binaryIntBaseSequence)
     {
-        uint64_t sequenceInt = binaryIntBaseSequence.sequenceInt;
+        kMismatch::uint_type sequenceInt = binaryIntBaseSequence.sequenceInt;
         std::ostringstream oss;
         std::string resultToPrint;
         do
@@ -45,8 +46,8 @@ public:
     }
 
 protected:
-    uint64_t sequenceInt;
-    BinaryIntBaseSequence(uint64_t sequenceInt)
+    kMismatch::uint_type sequenceInt;
+    BinaryIntBaseSequence(kMismatch::uint_type sequenceInt)
     {
         this->sequenceInt = sequenceInt;
     }

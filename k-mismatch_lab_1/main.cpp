@@ -28,21 +28,8 @@ using namespace std;
 int main() {
 	SimpleTimer timer;
 	int64_t s = 0;
-	/*auto combinations = Combination::generateAllCombinations(35, 12);
-	for (auto combination : combinations) {
-		//cout << combination << endl;
-		s++;
-	}
-	cout << s;*/
-	/*auto forms = Form::generateAllForms(10, 3);
-	for (auto form : forms) {
-		cout << form << '\n';
-		s++;
-	}
-	cout << s;
-	*/
-	//auto mcs = MCS::buildMCSForm2CombMap(23, 14, 5);
-	auto mcs = MCS::buildMCSNaiveMultithreaded(23, 23 * 40 / 100, 5);
+	int length = 25;
+	auto mcs = MCS::buildMCSNaiveMultithreaded(length, length * 40 / 100, 5);
 
 	std::cout << "\nMCS:\n";
 	for (auto form : mcs.getMcsForms()) {

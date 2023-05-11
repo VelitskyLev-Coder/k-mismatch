@@ -1,7 +1,7 @@
 #pragma once
 #include "binaryIntBaseSequence.h"
 #include <vector>
-
+#include "type_defs.h"
 class Combination;
 
 class Form: public BinaryIntBaseSequence<Form>

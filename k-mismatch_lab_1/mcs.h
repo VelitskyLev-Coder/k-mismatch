@@ -3,6 +3,7 @@
 #include "combination.h"
 #include "form.h"
 #include <tuple>
+#include "type_defs.h"
 class MCS
 {
 public:

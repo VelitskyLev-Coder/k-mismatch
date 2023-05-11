@@ -44,5 +44,8 @@
     <ClCompile Include="mcs.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="type_defs.h">
+      <Filter>Header Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
