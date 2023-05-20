@@ -12,7 +12,12 @@ public:
 
 	static std::vector<Form> generateAllForms(uint64_t length, uint64_t matches);
 
+	size_t getSize() const;
+	std::string getStringFromPosition(const std::string& str, size_t pos) const;
+
 	friend class Combination;
+
+
 
 };
 

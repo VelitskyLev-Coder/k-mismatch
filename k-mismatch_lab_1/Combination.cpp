@@ -10,7 +10,7 @@ bool Combination::contains(const Form& form) const
     kMismatchIntegerType::uint_type formInt = form.sequenceInt;
     kMismatchIntegerType::uint_type combinationInt = this->sequenceInt;
 
-    //Run until the MBS of integer type is 1
+    //Run until the MSB of integer type is 1
     while (!((static_cast<kMismatchIntegerType::uint_type>(1) << (kMismatchIntegerType::UINT_TYPE_SIZE - 1)) & formInt))
     {
         /*

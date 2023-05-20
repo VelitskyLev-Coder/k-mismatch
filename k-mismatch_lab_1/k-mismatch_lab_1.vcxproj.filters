@@ -30,6 +30,9 @@
     <ClInclude Include="mcs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="k_mismatch_search.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="combination.cpp">
@@ -46,6 +49,9 @@
     </ClCompile>
     <ClCompile Include="type_defs.h">
       <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="k_mismatch_search.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

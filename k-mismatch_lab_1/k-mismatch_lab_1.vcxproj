@@ -126,7 +126,6 @@
       <LanguageStandard>stdcpp17</LanguageStandard>
       <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
       <AdditionalIncludeDirectories>C:\Users\Lev\Google Drive\Study\text__code\k-mismatch_lab_1\k-mismatch_lab_1\k-mismatch_lab_1\boost_dependencies</AdditionalIncludeDirectories>
-      <AdditionalOptions>/arch:AVX2 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -140,11 +139,13 @@
     <ClInclude Include="binomFunction.h" />
     <ClInclude Include="combination.h" />
     <ClInclude Include="form.h" />
+    <ClInclude Include="k_mismatch_search.h" />
     <ClInclude Include="mcs.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="combination.cpp" />
     <ClCompile Include="form.cpp" />
+    <ClCompile Include="k_mismatch_search.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mcs.cpp" />
     <ClCompile Include="type_defs.h" />
