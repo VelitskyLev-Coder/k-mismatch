@@ -28,13 +28,6 @@ private:
 
 using namespace std;
 
-std::vector<std::string> getSubstrings(const std::string& input, int N, int length) {
-	std::vector<std::string> substrings;
-	for (int i = 0; i < N; i++) {
-		substrings.push_back(input.substr(i * length, length));
-	}
-	return substrings;
-}
 
 int main() {
 	//timing section
